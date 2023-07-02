@@ -25,4 +25,4 @@ for archivo in "$directorio_imagenes"/*; do
     echo "Archivo ignorado: $archivo"
   fi
 
-done"$archivo""$archivo""$archivo"
+done
