@@ -10,7 +10,7 @@ echo "4: Procesar"
 echo "5: Comprimir"
 echo "6: Salir"
 
-	read -p "Seleccione una opcion:  " sal
+	read -p "Seleccione una opcion: " sal
 
 	case $sal in
 		1) echo " Has seleccionado generar imagenes ";;
