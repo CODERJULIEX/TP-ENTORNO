@@ -1,21 +1,23 @@
 #!/bin/bash
 
-# Se deberán recortar las imágenes a una resolución de 512*512 con alguna utilid>
+#Se deberán recortar las imágenes a una resolución de 512*512 con alguna utilidad como imagemagick. 
+#Solamente deben procesarse aquellas imágenes que tengan nombres de personas válidos.
+#Entiéndase por nombres de personas válidos a cualquier combinación de palabras que empiecen con un letra mayúscula y sigan por minúsculas.
 
-# Directorio de las imágenes
-directorio_imagenes="/ruta/a/tus/imagenes" #falta la ruta
+#Directorio de las imágenes
+directorio_imagenes="/ruta/a/las/imagenes" #falta la ruta
 
-# Recorrer los archivos del directorio
+#Recorrer los archivos del directorio
 for archivo in "$directorio_imagenes"/*; do
-  # Obtener el nombre base del archivo sin la ruta ni la extensión
+  #Obtener el nombre base del archivo sin la ruta ni la extensión
   nombre_base=$(basename "$archivo" | cut -d. -f1)
 
-  # Verificar si el nombre del archivo cumple con el patrón de una persona váli>
+  #Verificar si el nombre del archivo cumple con el patrón de una persona váli>
   if [[ $nombre_base =~ ^[A-Z][a-z]+ ]]; then
-    # Ruta y nombre del archivo de salida
+    #Ruta y nombre del archivo de salida
     archivo_salida="${directorio_imagenes}/${nombre_base}_recortada.jpg"
 
-    # Recortar la imagen a una resolución de 512x512 usando ImageMagick
+    #Recortar la imagen a una resolución de 512x512
     convert "$archivo" -gravity center -resize 512x512+0+0 \
 -extent 512x512 "$archivo_salida"
 
@@ -26,3 +28,4 @@ for archivo in "$directorio_imagenes"/*; do
   fi
 
 done
+
