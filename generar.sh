@@ -3,6 +3,8 @@
 
 mkdir -p "imagenes"
 cd "imagenes"
+rm -f "dict.csv"
+wget https://raw.githubusercontent.com/adalessandro/EdP-2023-TP-Final/main/dict.csv
 ARCHIVO="dict.csv"
 for (( i = 0; i <$1; i++ ))
 do
@@ -13,5 +15,11 @@ do
 	wget --default-page="$NOMBRE" https://thispersondoesnotexist.com
 	sleep 2s
 done
+
+rm -f "dict.csv"
+cd ..
+touch suma_de_verificaciones.txt
+md5sum imagenes >> suma_de_verificaciones.txt
+tar -czvf imagenes.tar imagenes 
 
 exit 0
