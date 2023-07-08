@@ -1,19 +1,32 @@
-!/bin/bash
+#!/bin/bash
 
-#Deberá verificar que exista el archivo que se descargó o se creó con los scripts anteriores y descomprimirlo (definir un nombre común para >
+#Se debe poder indicar por argumento dos archivos (uno con las imágenes comprimidas y otro con una suma de verificación). 
+#Si ocurrió algún error se debe informar al usuario de lo contrario se procede a descomprimir.
 
-archivo="nombre_del_archivo.tar.gz"
+#Verificar que se proporcionen dos argumentos
+if [ $# -ne 2 ]; then
+  echo "Error: Se requieren dos argumentos. Uso: $0 <imagenes.tar> <suma_de_verificaciones.txt>"
+  exit 1
+fi
 
-#Verificar si el archivo existe
-if [ -f "$archivo" ]; then
-        echo "El archivo $archivo existe."
+#Obtener nombres de archivos de los argumentos
+imagenes.tar=$1
+suma_de_verificaciones.txt=$2
 
-        #Descomprimir el archivo
-        tar -xzf "$archivo" -C
-directorio_destino
+#Verificar la existencia de los archivos
+if [ ! -f "$imagenes.tar" ]; then
+  echo "Error: El archivo de imágenes comprimidas '$imagenes.tar' no existe."
+  exit 1
+fi
 
-        echo "El archivo $archivo fue descomprimido."
-else
-        echo "El archivo $archivo no existe."
-fi 
+if [ ! -f "$suma_de_verificaciones.txt" ]; then
+  echo "Error: El archivo de suma de verificación '$suma_de_verificaciones.txt' no existe."
+  exit 1
+fi
+
+#Descomprimir las imágenes
+tar -xf "$imagenes.tar" -C .
+
+echo "Descompresión completada."
+ 
 
