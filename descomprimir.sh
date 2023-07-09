@@ -1,17 +1,17 @@
-!/bin/bash
+#!/bin/bash
 
-#Deberá verificar que exista el archivo que se descargó o se creó con los scripts anteriores y descomprimirlo (definir un nombre común para >
+#Se debe poder indicar por argumento dos archivos (uno
+#con las imágenes comprimidas y otro con una suma de verificación). Si
+#ocurrió algún error se debe informar al usuario de lo contrario se procede
+#a descomprimir.
 
-archivo="nombre_del_archivo.tar.gz"
 
-#Verificar si el archivo existe
-if [ -f "$archivo" ]; then
+ARCHIVO="$1"
+
+if [ -f "$ARCHIVO" ]
+then
         echo "El archivo $archivo existe."
-
-        #Descomprimir el archivo
-        tar -xzf "$archivo" -C
-directorio_destino
-
+        tar -xvf "$ARCHIVO" 
         echo "El archivo $archivo fue descomprimido."
 else
         echo "El archivo $archivo no existe."
