@@ -5,7 +5,7 @@
 #Entiéndase por nombres de personas válidos a cualquier combinación de palabras que empiecen con un letra mayúscula y sigan por minúsculas.
 
 #Directorio de las imágenes
-directorio_imagenes="/ruta/a/las/imagenes" #falta la ruta
+directorio_imagenes="./imagenes"
 
 #Recorrer los archivos del directorio
 for archivo in "$directorio_imagenes"/*; do
@@ -15,7 +15,8 @@ for archivo in "$directorio_imagenes"/*; do
   #Verificar si el nombre del archivo cumple con el patrón de una persona váli>
   if [[ $nombre_base =~ ^[A-Z][a-z]+ ]]; then
     #Ruta y nombre del archivo de salida
-    archivo_salida="${directorio_imagenes}/${nombre_base}_recortada.jpg"
+    mkdir -p imagenes_recortadas
+    archivo_salida="./imagenes_recortadas/${nombre_base}_recortada.jpg"
 
     #Recortar la imagen a una resolución de 512x512
     convert "$archivo" -gravity center -resize 512x512+0+0 \
@@ -29,3 +30,6 @@ for archivo in "$directorio_imagenes"/*; do
 
 done
 
+exit 0
+
+#sudo apt install imagemagick
