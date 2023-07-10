@@ -18,9 +18,6 @@ else
         echo "El archivo $archivo no existe."
 fi 
 =======
-#Se debe poder indicar por argumento dos archivos (uno con las imágenes comprimidas y otro con una suma de verificación). 
-#Si ocurrió algún error se debe informar al usuario de lo contrario se procede a descomprimir.
-
 #Verificar que se proporcionen dos argumentos
 if [ $# -ne 2 ]; then
   echo "Error: Se requieren dos argumentos. Uso: $0 <imagenes.tar> <suma_de_verificaciones.txt>"
