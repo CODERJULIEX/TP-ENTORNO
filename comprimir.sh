@@ -1,47 +1,42 @@
-
 #!/bin/bash
 
-#generar un archivo con la lista de nombres de todas las imágenes 
-
-cd /ruta/directorio_imagenes #falta ruta
-
-touch lista_nombres.txt #como hago para que este archivo no me aparezca en la lista?
+IMAGENES="./imagenes"
+if [ ! -e "$IMAGENES" ]
+then
+	echo "Error: no existe la carpeta imagenes"
+	exit 1
+fi
+rm -f lista_nombres.txt
+cd ./imagenes
+touch ../lista_nombres.txt 
 
 for i in *
-
 do
-
-echo i > lista_nombres.txt
-
+	echo "$i" >> ../lista_nombres.txt
 done
 
-# generar un archivo con la lista de nombres validos
-# generar un archivo con el total de personas cuyo nombre finaliza con la letra a. 
+rm -f ../lista_nombres_validos.txt
+touch ../lista_nombres_validos.txt
+rm -f ../lista_nombres_terminan_en_a.txt
+touch ../lista_nombres_terminan_en_a.txt
+LISTA_NOMBRES=../lista_nombres.txt
 
-touch lista_nombres_validos.txt
-
-touch lista_nombres_terminan_en_a.txt
-
-for nombre in lista_nombres.txt
-	
+while IFS= read -r nombre
 do
 
-	primer_caracter=${nombre:0:1}
-
-	resto_caracteres=${nombre:1}
-	
-	ultimo_caracter=${nombre: -1}
-	if [[ $primer_caracter == [[upper]] && $resto_caracteres == [[lower]] 
-
-		echo nombre > lista_nombres_validos.txt
+	ultimo_caracter="${nombre: -1}"
+	if [[ $nombre =~ ^[A-Z][a-z]+ ]]
+	then
+		echo "$nombre" >> ../lista_nombres_validos.txt
 
 	fi
 
-	if [[ $ultimo_caracter == a ]]
-	
-	echo nombre > lista_nombres_terminan_en_a.txt
+	if [[ "$ultimo_caracter" == "a" ]]
+	then
+		echo "$nombre" >> ../lista_nombres_terminan_en_a.txt
 
 	fi
-done
+done < "$LISTA_NOMBRES"
 
+exit 0
 #generar un archivo comprimido que incluya los archivos generados en los items anteriores y todas las imágenes. El archivo comprimido debe poder accederse desde fuera del contenedor.
