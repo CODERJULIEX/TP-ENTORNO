@@ -23,7 +23,7 @@ do
 			;;
 		3)
 			echo "Has seleccionado descomprimir "
-			bash descomprimir.sh
+			bash descomprimir.sh imagenes.tar suma_de_verificacion.txt
 			;;
 		4)
 			echo "Has seleccionado procesar"
