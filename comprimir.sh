@@ -42,10 +42,14 @@ mv ./lista_nombres.txt ./archivos
 mv ./lista_nombres_validos.txt ./archivos
 mv ./lista_nombres_terminan_en_a.txt ./archivos                         #se mueven todos las listas de nombres dentro de la carpeta archivos
 cp -r ./imagenes ./archivos                                             #se copia la carpeta imagenes dentro de archivos
+if [ -e "./imagenes_recortadas" ]
+then
+	cp -r ./imagenes_recortadas ./archivos
+fi
 tar -cvf archivos.tar archivos                                          #se comprime la carpeta archivos
 
 docker run -it -v "$(pwd)/archivos_datos:/archivos" ubuntu cp ./archivos/archivos.tar /archivos_datoS/ 	#crea un volumen montado y vincula el host con el contenedor, luego
 													#copia el archivo de una carpeta a otra
 
-echo " El archivo comprimido 'archivo.tar' se guardara en la carpeta archivos_datos" #imprime por pantalla donde encontrar el archivo creado
+echo "El archivo comprimido 'archivo.tar' se guardara en la carpeta archivos_datos" #imprime por pantalla donde encontrar el archivo creado
 exit 0
