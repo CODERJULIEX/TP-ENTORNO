@@ -38,5 +38,12 @@ do
 	fi
 done < "$LISTA_NOMBRES"
 
+cd ..
+mkdir -p archivos
+mv ./lista_nombres.txt ./archivos
+mv ./lista_nombres_validos.txt ./archivos
+mv ./lista_nombres_terminan_en_a.txt ./archivos
+cp -r ./imagenes ./archivos
+tar -cvf archivos.tar archivos
+
 exit 0
-#generar un archivo comprimido que incluya los archivos generados en los items anteriores y todas las imágenes. El archivo comprimido debe poder accederse desde fuera del contenedor.
