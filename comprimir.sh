@@ -46,4 +46,7 @@ mv ./lista_nombres_terminan_en_a.txt ./archivos
 cp -r ./imagenes ./archivos
 tar -cvf archivos.tar archivos
 
+#crea un volumen montado y vincula el host con el contenedor, luego copia el archivo de una carpeta a otra
+docker run -it -v "$(pwd)/archivos_datos:/archivos" ubuntu cp ./archivos/archivos.tar /archivos_datos/
+
 exit 0
