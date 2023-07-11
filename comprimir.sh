@@ -45,4 +45,5 @@ tar -cvf archivos.tar archivos						#se comprime la carpeta archivos
 
 docker run -it -v "$(pwd)/archivos_datos:/archivos" ubuntu cp ./archivos/archivos.tar /archivos_datoS/ #crea un volumen montado y vincula el host con el contenedor, luego copia el archivo de una carpeta a otra
 
+echo " El archivo comprimido 'archivo.tar' se guardara en la carpeta archivos_datos" #imprime por pantalla donde encontrar el archivo creado
 exit 0
