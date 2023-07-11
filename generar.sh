@@ -30,6 +30,5 @@ rm -f "dict.csv"
 cd ..
 rm -f "suma_de_verificaciones.txt"
 find ./imagenes -type f -exec md5sum {} + | awk '{print $1}' | sort | md5sum > suma_de_verificacion.txt
-tar -czvf imagenes.tar imagenes 
-
+tar -cvf imagenes.tar imagenes 
 exit 0
