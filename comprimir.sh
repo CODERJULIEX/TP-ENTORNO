@@ -16,9 +16,10 @@ done
 
 touch ../lista_nombres_validos.txt					#crea la nueva lista_nombres_validos
 touch ../lista_nombres_terminan_en_a.txt				#crea la nueva lista_nombres_terminan_en_a
-while IFS= read -r NOMBRE < "../lista_nombres.txt"                      #permanece en el bucle mientras NOMBRE toma como valor los nombres de la lista_nombres.txt.
+while IFS= read -r NOMBRE 			                      	#permanece en el bucle mientras NOMBRE toma como valor los nombres de la lista_nombres.txt.
                                                                         #al establecer IFS como vacio trata toda la linea como una cadena, sin cortarla, y la asigna a la
 									#variable NOMBRE
+
 do
 
         ULTIMO_CARACTER="${NOMBRE: -1}"                                 #se guarda en una variable el ultimo caractes del nombre
@@ -33,7 +34,7 @@ do
                 echo "$NOMBRE" >> ../lista_nombres_terminan_en_a.txt    #se guarda en nombre que termina con a
         fi
 
-done
+done < "../lista_nombres.txt"
 
 cd ..                                                                   #se sale de la carpeta imagenes
 mkdir -p archivos                                                       #se crea el directorio archivos
