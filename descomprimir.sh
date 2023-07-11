@@ -6,7 +6,7 @@
 #a descomprimir
 
 if [ $# -ne 2 ]; then
-  	echo "Error: Se requieren dos argumentos. Uso: $0 <imagenes.tar> <suma_de_verificaciones.txt>"
+  	echo "Error: Se requieren dos argumentos. Uso: $0 <imagenes.tar> <suma_de_verificacion.txt>"
   	exit 2
 fi
 
