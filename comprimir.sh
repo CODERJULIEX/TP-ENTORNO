@@ -5,6 +5,7 @@ if [ ! -e "$IMAGENES" ]							#verifica que exista la carpeta imagenes
 then
 	echo "Error: no existe la carpeta imagenes"
 	exit 1
+
 fi
 cd ./imagenes
 touch ../lista_nombres.txt 						#crea la nueva lista_nombres
@@ -48,4 +49,5 @@ then
 fi
 tar -cvf archivos.tar archivos                                          #se comprime la carpeta archivos
 mv ./archivos.tar ./media
+
 exit 0
