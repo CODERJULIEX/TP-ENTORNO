@@ -4,6 +4,7 @@ FROM ubuntu
 
 # Instala las dependencias necesarias
 RUN apt-get update && apt-get install -y curl imagemagick
+RUN apt-get update && apt-get install -y wget
 
 # Copia los scripts al contenedor
 COPY generar.sh descomprimir.sh procesar.sh comprimir.sh menu.sh /
